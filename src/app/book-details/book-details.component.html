@@ -1,0 +1,122 @@
+<div class="my-container mx-auto" *ngIf="book">
+    <div class="row g-0">
+
+        <!-- Profile Image of book -->
+        <div class="col-4 p-4">
+            <div class="d-flex justify-content-center align-items-center">
+                <img src="../../assets/4.jpg"
+                     alt="" class="w-100">
+            </div>
+            <!-- {{book.bookCategory.subCategory}}/{{book.id}}/{{imageIndex}} -->
+
+            <div class="image-thumbnails mt-4 d-flex justify-content-between align-items-center">
+                <img src="../../assets/Adventure/12.jpg"
+                     alt="Thumbnail Image" (click)="imageIndex = 1">
+                <img src="../../assets/Art/23.jpg"
+                     alt="Thumbnail Image" (click)="imageIndex = 2">
+                <img src="../../assets/Biography/21.jpg"
+                     alt="Thumbnail Image" (click)="imageIndex = 3">
+                <img src="../../assets/Fiction/2.jpg"
+                     alt="Thumbnail Image" (click)="imageIndex = 4">
+                <img src="../../assets/Adventure/21.jpg"
+                     alt="Thumbnail Image" (click)="imageIndex = 5">
+            </div>
+        </div>
+
+        <!-- {{book.bookCategory.subCategory}}/{{book.id}} -->
+
+        <!-- Details of book -->
+        <div class="col-8 p-4">
+            <div class="card">
+                <div class="card-header">
+                    <h2>{{book.title | titlecase}}</h2>
+                </div>
+
+                <div class="card-body">
+                    <h1 class="card-title text-success">
+                        {{utilityService.applyDiscount(book.price,book.offer.discount)}}
+                        <span class="text-primary">-{{book.offer.discount}}%</span>
+                    </h1>
+                    <h4 class="card-subtitle text-danger text-decoration-line-through">
+                        {{book.price}}
+                    </h4>
+                </div>
+                <div class="card-body">
+                    <h6 class="card-subtitle my-2 text-primary"> {{book.quantity}} books are available. </h6>
+                    <div class="d-grid gap-2">
+                        <button type="button" class="btn btn-outline-success" [disabled]="!utilityService.isLoggedIn()"
+                                (click)="this.utilityService.addToCart(book)">Add to Cart
+                            <span *ngIf="!utilityService.isLoggedIn()">(Login First)</span>
+                        </button>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <h5 class="card-text">Description</h5>
+                    <ul class="list-group">
+                        <li class="list-group-item list-group-item-action"
+                            *ngFor="let item of book.description.split('. ')">
+                            {{item}}
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Suggested books -->
+    <div class="row g-0">
+        <div class="col-12 ps-5 pt-4 pb-3">
+            <h3 class="border border-secondary text-center py-2 my-rounded-corner w-25">Related books</h3>
+        </div>
+
+        <div class="col-12">
+            
+            <app-suggestedbooks [category]="book.bookCategory"></app-suggestedbooks>
+        </div>
+    </div>
+
+    <!-- Review -->
+    <div class="row g-0 my-5">
+        <!-- Users Review -->
+        <div class="col p-3">
+            <h3>Give Your Review</h3>
+            <h5 class="mt-4">Write Your Review</h5>
+            <textarea class="w-75 p-2" [formControl]="reviewControl"></textarea>
+            <div class="d-flex align-items-start">
+                <button class="btn btn-outline-secondary mt-4 me-5" type="button" (click)="submitReview()">
+                    Save Review
+                </button>
+
+                <div>
+                    <h6 class="text-danger mt-4" *ngIf="!utilityService.isLoggedIn()">Login first, then enter the
+                        review.</h6>
+                    <h6 class="text-danger" *ngIf="showError">Review Cannot Be Empty!</h6>
+                    <h6 class="text-success" *ngIf="reviewSaved">Review Saved Succesfully!</h6>
+                </div>
+            </div>
+        </div>
+
+        <!-- Other Review -->
+        <div class="col p-3">
+            <h3>Other Reviews</h3>
+            <h6 *ngIf="otherReviews.length === 0">No Reviews Yet!</h6>
+            <div class="card mt-3" *ngFor="let review of otherReviews">
+                <div class="card-header d-flex justify-content-between">
+                    <div class="card-text">
+                        {{review.user.firstName}}
+                        {{review.user.lastName}}
+                    </div>
+                    <div class="card-text fst-italic">
+                        Reviewed On: <span class="fw-bold">
+                            {{review.createdAt | date:"dd-MMM-yyyy"}}
+                        </span>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <div class="card-text">{{review.value}}</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
