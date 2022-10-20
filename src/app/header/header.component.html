@@ -13,10 +13,10 @@
                 <ul class="dropdown-menu fs-5">
                     <ng-container *ngFor="let item of navigationList; let i = index;">
                         <li class="text-center fw-bold">{{item.category | titlecase}}</li>
-                        <li *ngFor="let subcategory of item.subcategories" [style.cursor]="'pointer'">
+                        <li *ngFor="let subCategory of item.subcategories" [style.cursor]="'pointer'">
                             <a class="dropdown-item" Openbooks
-                               [category]="{id: 0, 'category': item.category, 'subCategory': subcategory}">
-                                {{subcategory | titlecase}}
+                               [category]="{id: 0, 'category': item.category, 'subCategory': subCategory}">
+                                {{subCategory | titlecase}}
                             </a>
                         </li>
                         <li *ngIf="i !== navigationList.length - 1">

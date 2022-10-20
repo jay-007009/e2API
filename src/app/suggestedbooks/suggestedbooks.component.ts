@@ -14,6 +14,13 @@ export class SuggestedbooksComponent implements OnInit {
     category: '',
     subCategory: '',
   };
+
+  @Input() subCategory: Category = {
+    id: 0,
+    category: '',
+    subCategory: '',
+  };
+
   @Input() count: number = 3;
   books: Book[] = [];
 

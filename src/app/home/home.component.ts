@@ -10,39 +10,59 @@ export class HomeComponent implements OnInit {
 
   suggestedBook: SuggestedBook[] = [
     {
-      banerimage:'25.jpg',
+      banerimage:'2.jpg',
         category:{
           id:1,
           category:'book',
           subCategory:'Adventure'
         },
+        subCategory:{
+          id:1,
+          category:'book',
+          subCategory:'Adventure'
+        }
     },
 
     {
-      banerimage:'52.jpg',
+      banerimage:'36.jpg',
         category:{
           id:1,
           category:'book',
           subCategory:'Biography'
         },
+        subCategory:{
+          id:1,
+          category:'book',
+          subCategory:'Adventure'
+        }
     },
 
     {
-      banerimage:'58.jpg',
+      banerimage:'56.jpg',
         category:{
           id:1,
           category:'book',
           subCategory:'Fiction'
         },
+        subCategory:{
+          id:1,
+          category:'book',
+          subCategory:'Adventure'
+        }
     },
 
     {
-      banerimage:'85.jpg',
+      banerimage:'63.jpg',
         category:{
           id:1,
           category:'book',
           subCategory:'Art'
         },
+        subCategory:{
+          id:1,
+          category:'book',
+          subCategory:'Adventure'
+        }
     },
   ];
   constructor() { }

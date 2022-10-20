@@ -16,7 +16,7 @@ export class OpenBooksDetailsDirective {
     this.router.navigate(['/books'], {
       queryParams: {
         category: this.category.category,
-        subcategory: this.category.subCategory,
+        subCategory: this.category.subCategory,
       },
     });
   }

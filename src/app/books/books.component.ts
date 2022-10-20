@@ -10,7 +10,7 @@ import { UtilityService } from '../services/utility.service';
 })
 export class BooksComponent implements OnInit {
 
-  view: 'grid' | 'list' = 'list';
+  view: 'grid' | 'list' = 'grid';
   sortby: 'default' | 'htl' | 'lth' = 'default';
   books: Book[] = [];
 
@@ -23,11 +23,11 @@ export class BooksComponent implements OnInit {
   ngOnInit(): void {
     this.activatedRoute.queryParams.subscribe((params: any) => {
       let category = params.category;
-      let subcategory = params.subcategory;
+      let subCategory = params.subCategory;
 
-      if (category && subcategory)
+      if (category && subCategory)
         this.navigationService
-          .getBooks(category, subcategory, 10)
+          .getBooks(category, subCategory, 10)
           .subscribe((res: any) => {
             this.books = res;
           });

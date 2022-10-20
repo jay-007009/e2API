@@ -5,6 +5,7 @@ import { NavigationService } from './../services/navigation.service';
 export interface SuggestedBook {
     banerimage: string;
     category: Category;
+    subCategory:Category;
   }
   
   export interface NavigationItem {

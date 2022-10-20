@@ -34,11 +34,11 @@ export class NavigationService {
     );
   }
 
-  getBooks(category: string, subcategory: string, count: number) {
+  getBooks(category: string, subCategory: string, count: number) {
     return this.http.get<any[]>(this.baseurl + 'GetBooks', {
       params: new HttpParams()
         .set('category', category)
-        .set('subcategory', subcategory)
+        .set('subCategory', subCategory)
         .set('count', count),
     });
   }
