@@ -5,8 +5,7 @@
         </div>
 
         <div class="overflow-hidden d-flex justify-content-center align-items-center">
-            <img src="../../assets/4.jpg" alt=""
-                 class="card-img-top" OpenBookDetails [bookId]="book.id">
+            <img src="../../assets/1.jpg" alt="" class="card-img-top" OpenBookDetails [bookId]="book.id">
         </div>
         <!-- {{book.bookCategory.subCategory}}/{{book.id}} -->
         <div class="card-body">
@@ -28,7 +27,7 @@
 
         <div class="card-footer d-grid gap-2">
             <button type="button" class="btn btn-outline-success" [disabled]="!utilityService.isLoggedIn()"
-                    (click)="this.utilityService.addToCart(book)">
+                (click)="this.utilityService.addToCart(book)">
                 Add to Cart
                 <span *ngIf="!utilityService.isLoggedIn()">(Login First)</span>
             </button>
@@ -40,8 +39,8 @@
     <div class="card">
         <div class="row g-0">
             <div class="col-md-4 overflow-hidden d-flex justify-content-center align-items-center">
-                <img src="../../assets/36.jpg"
-                     class="img-fluid rounded-start" alt="book Image" OpenBookDetails [bookId]="book.id">
+                <img src="../../assets/36.jpg" class="img-fluid rounded-start" alt="book Image" OpenBookDetails
+                    [bookId]="book.id">
             </div>
             <!-- {{book.bookCategory.subCategory}}/{{book.id}} -->
             <div class="col d-flex flex-column">
@@ -68,7 +67,7 @@
 
                 <div class="card-footer text-muted d-grid gap-2">
                     <button type="button" class="btn btn-outline-success" [disabled]="!utilityService.isLoggedIn()"
-                            (click)="this.utilityService.addToCart(book)">
+                        (click)="this.utilityService.addToCart(book)">
                         Add to Cart
                         <span *ngIf="!utilityService.isLoggedIn()">(Login First)</span>
                     </button>
@@ -84,8 +83,8 @@
         <div class="row g-0">
 
             <div class="col-4 overflow-hidden d-flex justify-content-center align-items-center">
-                <img src="../../assets/105.png"
-                     class="img-fluid rounded-start" alt="book Image" OpenBookDetails [bookId]="book.id">
+                <img src="../../assets/105.png" class="img-fluid rounded-start" alt="book Image" OpenBookDetails
+                    [bookId]="book.id">
             </div>
             <!-- {{book.bookCategory.subCategory}}/{{book.id}} -->
             <div class="col-8">
@@ -99,6 +98,11 @@
                         {{ book.price }}
                     </h6>
                 </div>
+                <div class="card-footer text-muted d-grid gap-2">
+                    <button class="btn btn-outline-danger" type="button">Remove From Cart</button>
+                </div>
+
+
             </div>
 
         </div>
@@ -109,8 +113,7 @@
     <div class="card text-center">
 
         <div class="overflow-hidden d-flex justify-content-center align-items-center">
-            <img src="../../assets/Art/23.jpg" alt=""
-                 class="card-img-top" OpenBookDetails [bookId]="book.id">
+            <img src="../../assets/Art/23.jpg" alt="" class="card-img-top" OpenBookDetails [bookId]="book.id">
         </div>
         <!-- {{book.bookCategory.subCategory}}/{{book.id}} -->
         <div class="card-body">

@@ -4,22 +4,16 @@
         <!-- Profile Image of book -->
         <div class="col-4 p-4">
             <div class="d-flex justify-content-center align-items-center">
-                <img src="../../assets/4.jpg"
-                     alt="" class="w-80">
+                <img src="../../assets/Adventure/{{imageIndex}}.jpg" alt="" class="w-80">
             </div>
             <!-- {{book.bookCategory.subCategory}}/{{book.id}}/{{imageIndex}} -->
 
             <div class="image-thumbnails mt-4 d-flex justify-content-between align-items-center">
-                <img src="../../assets/Adventure/12.jpg"
-                     alt="Thumbnail Image" (click)="imageIndex = 1">
-                <img src="../../assets/Art/23.jpg"
-                     alt="Thumbnail Image" (click)="imageIndex = 2">
-                <img src="../../assets/Biography/21.jpg"
-                     alt="Thumbnail Image" (click)="imageIndex = 3">
-                <img src="../../assets/Fiction/2.jpg"
-                     alt="Thumbnail Image" (click)="imageIndex = 4">
-                <img src="../../assets/Adventure/21.jpg"
-                     alt="Thumbnail Image" (click)="imageIndex = 5">
+                <img src="../../assets/Adventure/1.jpg" alt="Thumbnail Image" (click)="imageIndex = 1">
+                <img src="../../assets/Adventure/2.jpg" alt="Thumbnail Image" (click)="imageIndex = 2">
+                <img src="../../assets/Adventure/3.jpg" alt="Thumbnail Image" (click)="imageIndex = 3">
+                <img src="../../assets/Adventure/4.jpg" alt="Thumbnail Image" (click)="imageIndex = 4">
+                <img src="../../assets/Adventure/5.jpg" alt="Thumbnail Image" (click)="imageIndex = 5">
             </div>
         </div>
 
@@ -45,7 +39,7 @@
                     <h6 class="card-subtitle my-2 text-primary"> {{book.quantity}} books are available. </h6>
                     <div class="d-grid gap-2">
                         <button type="button" class="btn btn-outline-success" [disabled]="!utilityService.isLoggedIn()"
-                                (click)="this.utilityService.addToCart(book)">Add to Cart
+                            (click)="this.utilityService.addToCart(book)">Add to Cart
                             <span *ngIf="!utilityService.isLoggedIn()">(Login First)</span>
                         </button>
                     </div>
@@ -70,8 +64,9 @@
         </div>
 
         <div class="col-12">
-            
+            <app-suggestedbooks></app-suggestedbooks>
             <app-suggestedbooks [category]="book.bookCategory"></app-suggestedbooks>
+         
         </div>
     </div>
 
@@ -88,9 +83,8 @@
                 </button>
 
                 <div>
-                    <h6 class="text-danger mt-4" *ngIf="!utilityService.isLoggedIn()">Login first, then enter the
-                        review.</h6>
-                    <h6 class="text-danger" *ngIf="showError">Review Cannot Be Empty!</h6>
+                    <h6 class="text-success mt-4" *ngIf="!utilityService.isLoggedIn()">Login first, After create a review.</h6>
+                    <h6 class="text-danger" *ngIf="showError">Review Can't be Empty!</h6>
                     <h6 class="text-success" *ngIf="reviewSaved">Review Saved Succesfully!</h6>
                 </div>
             </div>
