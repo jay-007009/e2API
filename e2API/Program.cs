@@ -19,7 +19,7 @@ builder.Services.AddCors(options =>
                       });
 });
 
-builder.Services.AddScoped<IDataAccess, DataAccess>();
+builder.Services.AddSingleton<IDataAccess, DataAccess>();
 
 
 builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddJwtBearer(x =>

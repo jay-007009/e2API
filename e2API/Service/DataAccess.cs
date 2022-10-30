@@ -323,7 +323,7 @@ namespace e2API.Service
 
                 //Category Id kadhi che where pchi
                 // string query = "SELECT TOP " + count + " * FROM Books WHERE CategoryId(SELECT CategoryId FROM BookCategories WHERE Category=@c AND SubCategory=@s) ORDER BY newid();";
-                string query = "SELECT TOP " + count + " * FROM Books WHERE CategoryId In(SELECT CategoryId FROM BookCategories WHERE Category=@c AND SubCategory=@s) ORDER BY newid();";
+                string query = "SELECT TOP " + count + " * FROM Books WHERE CategoryId In (SELECT CategoryId FROM BookCategories WHERE Category=@c AND SubCategory=@s) ORDER BY newid();";
                 command.CommandText = query;
                 command.Parameters.Add("@c", System.Data.SqlDbType.NVarChar).Value = category;
                 command.Parameters.Add("@s", System.Data.SqlDbType.NVarChar).Value = subcategory;
@@ -615,7 +615,7 @@ namespace e2API.Service
 
                 return new JwtSecurityTokenHandler().WriteToken(jwtToken);
             }
-            return "";
+           // return "";
         }
     }
 }
