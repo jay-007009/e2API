@@ -16,11 +16,11 @@ export class HomeComponent implements OnInit {
           category:'book',
           subCategory:'Adventure'
         },
-        subCategory:{
-          id:1,
-          category:'book',
-          subCategory:'Adventure'
-        }
+        // subCategory:{
+        //   id:1,
+        //   category:'book',
+        //   subCategory:'Adventure'
+        // }
     },
 
     {
@@ -30,11 +30,11 @@ export class HomeComponent implements OnInit {
           category:'book',
           subCategory:'Biography'
         },
-        subCategory:{
-          id:1,
-          category:'book',
-          subCategory:'Adventure'
-        }
+        // subCategory:{
+        //   id:1,
+        //   category:'book',
+        //   subCategory:'Adventure'
+        // }
     },
 
     {
@@ -44,11 +44,11 @@ export class HomeComponent implements OnInit {
           category:'book',
           subCategory:'Fiction'
         },
-        subCategory:{
-          id:1,
-          category:'book',
-          subCategory:'Adventure'
-        }
+        // subCategory:{
+        //   id:1,
+        //   category:'book',
+        //   subCategory:'Adventure'
+        // }
     },
 
     {
@@ -58,11 +58,11 @@ export class HomeComponent implements OnInit {
           category:'book',
           subCategory:'Art'
         },
-        subCategory:{
-          id:1,
-          category:'book',
-          subCategory:'Adventure'
-        }
+        // subCategory:{
+        //   id:1,
+        //   category:'book',
+        //   subCategory:'Adventure'
+        // }
     },
   ];
   constructor() { }

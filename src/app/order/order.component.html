@@ -59,7 +59,7 @@
                         <td>Address</td>
                         <td *ngIf="true"> {{address}} </td>
                     </tr>
-                   
+
                     <tr>
                         <td>Mobile Number</td>
                         <td *ngIf="true"> {{mobileNumber}} </td>
@@ -75,7 +75,7 @@
 
             <div class="processing">
                 <div class="spinner-border me-4" role="status" *ngIf="displaySpinner">
-                    <span class="visually-hidden">processing</span>
+                    <span class="visually-hidden">Processing Payment</span>
                 </div>
                 <h6 class="m-0" [ngClass]="classname"> {{message}} </h6>
             </div>

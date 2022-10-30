@@ -17,7 +17,7 @@ import { OrderComponent } from './order/order.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { RegisterComponent } from './register/register.component';
 import { OpenBookDetailsDirective } from './directives/open-book-details.directive';
-import { OpenBooksDetailsDirective } from './directives/open-books-details.directive';
+import { OpenBooksDirective } from './directives/open-books.directive';
 import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
@@ -39,7 +39,7 @@ import { RouterModule } from '@angular/router';
     PageNotFoundComponent,
     RegisterComponent,
     OpenBookDetailsDirective,
-    OpenBooksDetailsDirective
+    OpenBooksDirective
   ],
   imports: [
     BrowserModule,

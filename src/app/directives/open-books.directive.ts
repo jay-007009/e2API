@@ -3,16 +3,16 @@ import { Router } from '@angular/router';
 import { Category } from '../models/models';
 
 @Directive({
-  selector: '[Openbooks]'
+  selector: '[OpenBooks]'
 })
-export class OpenBooksDetailsDirective {
+export class OpenBooksDirective {
   @Input() category: Category = {
     id: 0,
     category: '',
     subCategory: '',
   };
 
-  @HostListener('click') openbooks() {
+  @HostListener('click') OpenBooks() {
     this.router.navigate(['/books'], {
       queryParams: {
         category: this.category.category,

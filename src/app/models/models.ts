@@ -5,14 +5,14 @@ import { NavigationService } from './../services/navigation.service';
 export interface SuggestedBook {
     banerimage: string;
     category: Category;
-    subCategory:Category;
+   // subCategory:Category;
   }
-  
+
   export interface NavigationItem {
     category: string;
     subcategories: string[];
   }
-  
+
   export interface User {
     id: number;
     firstName: string;
@@ -24,21 +24,21 @@ export interface SuggestedBook {
     createdAt: string;
     modifiedAt: string;
   }
-  
-  
-  
+
+
+
   export interface Offer {
     id: number;
     title: string;
     discount: number;
   }
-  
+
   export interface Category {
     id: number;
     category: string;
     subCategory: string;
   }
-  
+
   export interface Book {
     id: number;
     title: string;
@@ -49,7 +49,7 @@ export interface SuggestedBook {
     quantity: number;
     imageName: string;
   }
-  
+
   export interface Review {
     id: number;
     user: User;
@@ -57,16 +57,16 @@ export interface SuggestedBook {
     value: string;
     createdAt: string;
   }
-  
+
   // #endregion
-  
+
   // #region Cart
-  
+
   export interface CartItem {
     id: number;
     book: Book;
   }
-  
+
   export interface Cart {
     id: number;
     user: User;
@@ -74,11 +74,11 @@ export interface SuggestedBook {
     ordered: boolean;
     orderedOn: string;
   }
-  
+
   // #endregion
-  
+
   // #region Payment and Orders
-  
+
   export interface PaymentMethod {
     id: number;
     type: string;
@@ -86,7 +86,7 @@ export interface SuggestedBook {
     available: boolean;
     reason: string;
   }
-  
+
   export interface Payment {
     id: number;
     user: User;
@@ -97,7 +97,7 @@ export interface SuggestedBook {
     amountPaid: number;
     createdAt: string;
   }
-  
+
   export interface Order {
     id: number;
     user: User;
@@ -105,5 +105,5 @@ export interface SuggestedBook {
     payment: Payment;
     createdAt: string;
   }
-  
+
   // #endregion

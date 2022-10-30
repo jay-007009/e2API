@@ -1,5 +1,5 @@
-import { Component, 
-  ElementRef, 
+import { Component,
+  ElementRef,
   OnInit,
   Type,
   ViewChild,
@@ -9,7 +9,7 @@ import { Component,
   import { RegisterComponent } from '../register/register.component';
   import { NavigationService } from '../services/navigation.service';
   import { UtilityService } from '../services/utility.service';
-  
+
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
@@ -69,11 +69,11 @@ export class HeaderComponent implements OnInit {
     let componentType!: Type<any>;
     if (name === 'login') {
       componentType = LoginComponent;
-      this.modalTitle.nativeElement.textContent = 'Enter Login Information';
+      this.modalTitle.nativeElement.textContent = 'Login';
     }
     if (name === 'register') {
       componentType = RegisterComponent;
-      this.modalTitle.nativeElement.textContent = 'Enter Register Information';
+      this.modalTitle.nativeElement.textContent = 'Register';
     }
 
     this.container.createComponent(componentType);
