@@ -52,7 +52,7 @@ import { RouterModule } from '@angular/router';
         tokenGetter: () => {
           return localStorage.getItem('user');
         },
-        allowedDomains: ['localhost:7149'],
+        allowedDomains: ['localhost:7262'],
       },
     }),
   ],

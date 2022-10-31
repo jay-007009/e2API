@@ -41,9 +41,9 @@ export class LoginComponent implements OnInit {
       .loginUser(this.Email.value, this.PWD.value)
       .subscribe((res: any) => {
         if (res.toString() !== 'invalid') {
-          this.message = 'Logged In Successfully.';
+          this.message = 'Logged In Successfully.'; //sweet alert
           this.utilityService.setUser(res.toString());
-          console.log(this.utilityService.getUser());
+          console.log(this.utilityService.getUser()); //comment
         } else {
           this.message = 'Invalid Credentials!';
         }

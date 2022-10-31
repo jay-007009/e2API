@@ -5,7 +5,7 @@
         </div>
 
         <div class="overflow-hidden d-flex justify-content-center align-items-center">
-            <img src="../../assets/1.jpg" alt="" class="card-img-top" appOpenBookDetails [bookId]="book.id">
+            <img src="../../assets/{{book.bookCategory.subCategory}}/{{book.id}}.jpg" alt="" class="card-img-top" appOpenBookDetails [bookId]="book.id">
         </div>
         <!-- {{book.bookCategory.subCategory}}/{{book.id}} -->
         <div class="card-body">
@@ -39,7 +39,7 @@
     <div class="card">
         <div class="row g-0">
             <div class="col-md-4 overflow-hidden d-flex justify-content-center align-items-center">
-                <img src="../../assets/36.jpg" class="img-fluid rounded-start" alt="book Image" appOpenBookDetails
+                <img src="../../assets/{{book.bookCategory.subCategory}}/{{book.id}}.jpg" class="img-fluid rounded-start" alt="book Image" appOpenBookDetails
                     [bookId]="book.id">
             </div>
             <!-- {{book.bookCategory.subCategory}}/{{book.id}} -->

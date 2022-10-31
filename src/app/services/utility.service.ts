@@ -53,7 +53,7 @@ export class UtilityService {
     let userid = this.getUser().id;
 
     this.navigationService.addToCart(userid, bookid).subscribe((res) => {
-      if (res.toString() === 'inserted') this.changeCart.next(1);
+      if (res.toString() === 'Register Successfully') this.changeCart.next(1);
     });
   }
 

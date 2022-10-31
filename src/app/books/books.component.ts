@@ -27,25 +27,46 @@ export class BooksComponent implements OnInit {
 
       if (category && subCategory)
         this.navigationService
-          .getBooks(category, subCategory, 10)
+          .getBooks(category, subCategory, 5) //ahiyathi book nu badlay
           .subscribe((res: any) => {
             this.books = res;
           });
     });
   }
 
-  sortByPrice(sortKey: string) {
-    this.books.sort((a, b) => {
-      if (sortKey === 'default') {
-        return a.id > b.id ? 1 : -1;
+  // sortByPrice(sortKey: string) {
+  //   this.books.sort((a, b) => {
+  //     if (sortKey === 'default') {
+  //       return a.id > b.id ? 1 : -1;
+  //     }
+  //     return (
+  //       (sortKey === 'htl' ? 1 : -1) *
+  //       (this.utilityService.applyDiscount(a.price, a.offer.discount) > //a greater hoi to -1 display krvanu high to low sort ma
+  //       this.utilityService.applyDiscount(b.price, b.offer.discount)
+  //         ? -1
+  //         : 1)
+  //     );
+  //   });
+  // }
+
+  sortByPrice(sortKey:string){
+    this.books.sort((a,b)=>{
+      if(sortKey==='default'){ //id pramane sort thai data
+        return a.id>b.id?1:-1;
       }
-      return (
-        (sortKey === 'htl' ? 1 : -1) *
-        (this.utilityService.applyDiscount(a.price, a.offer.discount) >
-        this.utilityService.applyDiscount(b.price, b.offer.discount)
-          ? -1
-          : 1)
-      );
+      if(sortKey==='htl'){
+       return this.utilityService.applyDiscount(a.price,a.offer.discount)>
+        this.utilityService.applyDiscount(b.price,b.offer.discount)
+        ?-1
+        :1
+      }
+      if(sortKey==='lth'){
+       return this.utilityService.applyDiscount(a.price,a.offer.discount)>
+        this.utilityService.applyDiscount(b.price,b.offer.discount)
+        ?1
+        :-1
+      }
+      return 0;
     });
   }
 
