@@ -48,7 +48,7 @@ namespace e2API.Controllers
 
             string? message;
             if (result) message = "inserted";
-            else message = "email not available";
+            else message = "Email not Found";
             return Ok(message);
         }
 
@@ -56,7 +56,7 @@ namespace e2API.Controllers
         public IActionResult LoginUser([FromBody] User user)
         {
             var token = dataAccess.IsUserPresent(user.Email, user.Password);
-            if (token == "") token = "invalid";
+            if (token == "") token = "Invalid token";
             return Ok(token);
         }
 

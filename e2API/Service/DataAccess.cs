@@ -323,7 +323,7 @@ namespace e2API.Service
 
                 //Category Id kadhi che where pchi
                 // string query = "SELECT TOP " + count + " * FROM Books WHERE CategoryId(SELECT CategoryId FROM BookCategories WHERE Category=@c AND SubCategory=@s) ORDER BY newid();";
-                string query = "SELECT TOP " + count + " * FROM Books WHERE CategoryId In (SELECT CategoryId FROM BookCategories WHERE Category=@c AND SubCategory=@s) ORDER BY newid();";
+                string query = "SELECT TOP " + count + " * FROM Books WHERE CategoryId=(SELECT CategoryId FROM BookCategories WHERE Category=@c AND SubCategory=@s) ORDER BY newid();";
                 command.CommandText = query;
                 command.Parameters.Add("@c", System.Data.SqlDbType.NVarChar).Value = category;
                 command.Parameters.Add("@s", System.Data.SqlDbType.NVarChar).Value = subcategory;
@@ -590,7 +590,7 @@ namespace e2API.Service
                 }
 
                 string key = "MNU66iBl3T5rh6H52i69";
-                string duration = "60";
+                string duration = "60"; //Token expiry date
                 var symmetrickey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(key));
                 var credentials = new SigningCredentials(symmetrickey, SecurityAlgorithms.HmacSha256);
 
@@ -615,7 +615,7 @@ namespace e2API.Service
 
                 return new JwtSecurityTokenHandler().WriteToken(jwtToken);
             }
-           // return "";
+            //return "";
         }
     }
 }
