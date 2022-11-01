@@ -170,15 +170,16 @@ namespace e2API.Service
                 connection.Open();
 
                 SqlDataReader reader = command.ExecuteReader();
+
                 while (reader.Read())
                 {
                     PaymentMethod paymentMethod = new()
                     {
                         Id = (int)reader["PaymentMethodId"],
-                        Type = (string)reader["Type"],
-                        Provider = (string)reader["Provider"],
+                        Type =  (reader["Type"]!= DBNull.Value) ?(string)reader["Type"] : string.Empty,
+                        Provider = (reader["Provider"] != DBNull.Value) ? (string)reader["Provider"] : string.Empty,
                         Available = bool.Parse((string)reader["Available"]),
-                        Reason = (string)reader["Reason"]
+                        Reason = (reader["Reason"] != DBNull.Value) ? (string)reader["Reason"] : string.Empty
                     };
                     result.Add(paymentMethod);
                 }
