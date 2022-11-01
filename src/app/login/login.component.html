@@ -28,7 +28,7 @@
 
     <!-- Login Button -->
     <div>
-        <button type="submit" [disabled]="loginForm.invalid" class="d-block mx-auto btn btn-outline-primary">
+        <button type="submit" [disabled]="loginForm.invalid" (click)="showSuccess()" class="d-block mx-auto btn btn-outline-primary">
             Login
         </button>
     </div>

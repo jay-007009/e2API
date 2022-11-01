@@ -83,7 +83,7 @@
         <div class="row g-0">
 
             <div class="col-4 overflow-hidden d-flex justify-content-center align-items-center">
-                <img src="../../assets/105.png" class="img-fluid rounded-start" alt="book Image" appOpenBookDetails
+                <img src="../../assets/{{book.bookCategory.subCategory}}/{{book.id}}.jpg " class="img-fluid rounded-start" alt="book Image" appOpenBookDetails
                     [bookId]="book.id">
             </div>
             <!-- {{book.bookCategory.subCategory}}/{{book.id}} -->
@@ -97,12 +97,11 @@
                     <h6 class="card-subtitle text-danger text-decoration-line-through">
                         {{ book.price }}
                     </h6>
+                    <span class="text-primary">{{book.quantity}} books are available. </span>
                 </div>
                 <div class="card-footer text-muted d-grid gap-2">
-                    <button class="btn btn-outline-danger" type="button">Remove From Cart</button>
+                    <!-- <button class="btn btn-outline-danger" type="button">Remove From Cart</button> -->
                 </div>
-
-
             </div>
 
         </div>
@@ -113,7 +112,8 @@
     <div class="card text-center">
 
         <div class="overflow-hidden d-flex justify-content-center align-items-center">
-            <img src="../../assets/Art/23.jpg" alt="" class="card-img-top" appOpenBookDetails [bookId]="book.id">
+            <img src="../../assets/{{book.bookCategory.subCategory}}/{{book.id}}.jpg" alt="" class="card-img-top" 
+            appOpenBookDetails [bookId]="book.id">
         </div>
         <!-- {{book.bookCategory.subCategory}}/{{book.id}} -->
         <div class="card-body">

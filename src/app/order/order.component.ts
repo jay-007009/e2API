@@ -69,7 +69,7 @@ export class OrderComponent implements OnInit {
       .getActiveCartOfUser(this.utilityService.getUser().id)
       .subscribe((res: any) => {
         this.usersCart = res;
-        this.utilityService.calculatePayment(res, this.usersPaymentInfo);
+       this.utilityService.calculatePayment(res, this.usersPaymentInfo);
       });
 
     // Set address and phone number
@@ -84,17 +84,17 @@ export class OrderComponent implements OnInit {
 
   placeOrder() {
     this.displaySpinner = true;
-    let isPaymentSuccessfull = this.payMoney();
+    let isPaymentSuccessfull = this.payMoney(); //upi interface
 
     if (!isPaymentSuccessfull) {
       this.displaySpinner = false;
-      this.message = 'Something went wrong! Payment did not happen!';
+      this.message = 'Something went wrong! Payment Not Done!';
       this.classname = 'text-danger';
       return;
     }
 
     let step = 0;
-    let count = timer(0, 3000).subscribe((res) => {
+    let count = timer(0, 2000).subscribe((res) => { //rx js no javascript function che
       ++step;
       if (step === 1) {
         this.message = 'Processing Payment';
@@ -154,7 +154,7 @@ export class OrderComponent implements OnInit {
           createdAt: '',
         };
         this.navigationService.insertOrder(order).subscribe((orderResponse) => {
-          this.utilityService.changeCart.next(0);
+          this.utilityService.changeCart.next(0);//change
         });
       });
   }

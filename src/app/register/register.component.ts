@@ -1,3 +1,5 @@
+
+
 import { Component, OnInit } from '@angular/core';
 import {
   FormBuilder,
@@ -7,6 +9,7 @@ import {
 } from '@angular/forms';
 import { User } from '../models/models';
 import { NavigationService } from '../services/navigation.service';
+
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
@@ -20,6 +23,7 @@ export class RegisterComponent implements OnInit {
   constructor(
     private fb: FormBuilder,
     private navigationService: NavigationService
+   
   ) {}
 
   ngOnInit(): void {
@@ -56,6 +60,7 @@ export class RegisterComponent implements OnInit {
   }
 
   register() {
+    debugger;
     let user: User = {
       id: 0,
       firstName: this.FirstName.value,
@@ -69,6 +74,7 @@ export class RegisterComponent implements OnInit {
     };
 
     this.navigationService.registerUser(user).subscribe((res: any) => {
+    
       this.message = res.toString();
     });
   }

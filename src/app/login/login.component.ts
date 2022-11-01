@@ -7,6 +7,7 @@ import {
 } from '@angular/forms';
 import { NavigationService } from '../services/navigation.service';
 import { UtilityService } from '../services/utility.service';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-login',
@@ -17,6 +18,7 @@ export class LoginComponent implements OnInit {
   loginForm!: FormGroup;
   message = '';
   constructor(
+    private toastr: ToastrService,
     private fb: FormBuilder,
     private navigationService: NavigationService,
     private utilityService: UtilityService
@@ -37,11 +39,14 @@ export class LoginComponent implements OnInit {
   }
 
   login() {
+    debugger;
     this.navigationService
       .loginUser(this.Email.value, this.PWD.value)
       .subscribe((res: any) => {
         if (res.toString() !== 'invalid') {
+          this.showSuccess();
           this.message = 'Logged In Successfully.'; //sweet alert
+         
           this.utilityService.setUser(res.toString());
           console.log(this.utilityService.getUser()); //comment
         } else {
@@ -56,5 +61,7 @@ export class LoginComponent implements OnInit {
   get PWD(): FormControl {
     return this.loginForm.get('pwd') as FormControl;
   }
-
+  showSuccess() {
+    this.toastr.success('Hello world!', 'Toastr fun!');
+  }
 }

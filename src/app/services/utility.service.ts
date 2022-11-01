@@ -3,13 +3,15 @@ import { JwtHelperService } from '@auth0/angular-jwt';
 import { Subject, window } from 'rxjs';
 import { Cart, Payment, Book, User } from '../models/models';
 import { NavigationService } from './navigation.service';
+import { ToastrService } from 'ngx-toastr';
 @Injectable({
   providedIn: 'root'
 })
 export class UtilityService {
-  changeCart = new Subject();
+  changeCart = new Subject(); //subject is same as observable 
 
   constructor(
+    private toastr: ToastrService,
     private navigationService: NavigationService,
     private jwt: JwtHelperService
   ) {}
@@ -49,11 +51,13 @@ export class UtilityService {
   }
 
   addToCart(book: Book) {
+    debugger;
     let bookid = book.id;
     let userid = this.getUser().id;
 
     this.navigationService.addToCart(userid, bookid).subscribe((res) => {
-      if (res.toString() === 'Register Successfully') this.changeCart.next(1);
+      this.showSuccess() ;
+      if (res.toString() === 'inserted.') this.changeCart.next(1); //change register
     });
   }
 
@@ -78,10 +82,10 @@ export class UtilityService {
       );
     }
 
-    if (payment.amountPaid > 50000) payment.shipingCharges = 2000;
-    else if (payment.amountPaid > 20000) payment.shipingCharges = 1000;
-    else if (payment.amountPaid > 5000) payment.shipingCharges = 500;
-    else payment.shipingCharges = 200;
+    if (payment.amountPaid > 50000) payment.shipingCharges = 500; //change
+    else if (payment.amountPaid > 20000) payment.shipingCharges = 200;
+    else if (payment.amountPaid > 5000) payment.shipingCharges = 100;
+    else payment.shipingCharges = 50;
   }
 
   calculatePricePaid(cart: Cart) {
@@ -98,5 +102,9 @@ export class UtilityService {
   orderTheCart() {
     
   }
+  showSuccess() {
+    this.toastr.success('Hello world!', 'Toastr fun!');
+  }
+
   
 }
