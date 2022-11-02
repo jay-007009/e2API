@@ -1,0 +1,24 @@
+﻿@model Tuple<object,object,object>
+@{
+    ViewBag.Title = "Index";
+}
+<fieldset>
+
+
+    <legend>
+        Restaurant App
+    </legend>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6" >
+                <div class="form-group">
+                    Customer:
+                    @Html.DropDownList("Customer",new SelectList(@Model.Item1,dataValueField:"Value",dataTextField:"Text")),
+
+
+                </div>
+            </div>
+        </div>
+
+    </div>
+</fieldset>
