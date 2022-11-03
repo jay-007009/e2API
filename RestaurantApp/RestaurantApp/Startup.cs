@@ -28,15 +28,28 @@ namespace RestaurantApp
         {
             services.AddControllersWithViews();
 
-            services.AddDbContext<RestaurantDbContext>(options =>
-            {
-                options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection"));
+            //services.AddDbContext<RestaurantDbContext>(options =>
+            //{
+            //    options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection"));
 
-            }
+            //}
+
+             services.AddDbContext<TraineeDemo1Context>(options =>
+             {
+                 options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection"));
+
+             }
+
+             
+            
           );
             services.AddSingleton<ICustomer, CustomerRepository>();
             services.AddSingleton<IItem, ItemRepository>();
             services.AddSingleton<IPaymentType, PaymentTypeRepository>();
+
+            services.AddRazorPages().AddRazorRuntimeCompilation();
+            services.AddControllersWithViews().AddRazorRuntimeCompilation();
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -58,12 +71,12 @@ namespace RestaurantApp
             app.UseRouting();
             app.UseAuthentication();
             app.UseAuthorization();
-            app.UseSession();
+            //app.UseSession();
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllerRoute(
                     name: "default",
-                    pattern: "{controller=Home}/{action=Index}/{id?}");
+                    pattern: "{controller=Customer}/{action=Index}/{id?}");
             });
         }
     }

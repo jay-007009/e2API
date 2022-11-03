@@ -13,7 +13,7 @@ namespace RestaurantApp.Repository
         {
             _traineeDemo = new TraineeDemo1Context();
         }
-        public List<ItemViewModel> GetAllItem()
+        public IEnumerable<ItemViewModel> GetAllItem()
         {
             var ItemDTOs = _traineeDemo.Items.Select(itemmodel => new ItemViewModel
             {

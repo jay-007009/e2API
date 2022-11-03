@@ -5,6 +5,6 @@ namespace RestaurantApp.Repository
 {
     public interface IPaymentType
     {
-        List<PaymentTypeViewModel> GetAllPaymentType();
+        IEnumerable<PaymentTypeViewModel> GetAllPaymentType();
     }
 }

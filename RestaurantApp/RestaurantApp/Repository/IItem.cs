@@ -5,6 +5,6 @@ namespace RestaurantApp.Repository
 {
     public interface IItem
     {
-        List<ItemViewModel> GetAllItem();
+        IEnumerable<ItemViewModel> GetAllItem();
     }
 }

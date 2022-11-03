@@ -5,6 +5,7 @@ namespace RestaurantApp.Repository
 {
     public interface ICustomer
     {
-        List<CustomerViewModel> GetAllCustomer();
+        IEnumerable<CustomerViewModel> GetAllCustomer();
+        decimal getItemPrice(int itemId);
     }
 }

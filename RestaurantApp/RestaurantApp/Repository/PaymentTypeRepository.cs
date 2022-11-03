@@ -14,7 +14,7 @@ namespace RestaurantApp.Repository
             _traineeDemo = new TraineeDemo1Context();
         }
 
-        public List<PaymentTypeViewModel> GetAllPaymentType()
+        public IEnumerable<PaymentTypeViewModel> GetAllPaymentType()
         {
             var PaymentDTOs = _traineeDemo.PaymentTypes.Select(paymentmodel => new PaymentTypeViewModel
             {

@@ -1,24 +1,191 @@
-﻿@model Tuple<object,object,object>
+﻿@using RestaurantApp.ViewModel
+@model Tuple<IEnumerable<CustomerViewModel>, IEnumerable<ItemViewModel>, IEnumerable<PaymentTypeViewModel>>
+
 @{
     ViewBag.Title = "Index";
 }
+
+<style>
+    fieldset {
+        border: 1px solid #ddd !important;
+        margin: 0;
+        min-width: 0;
+        padding: 10px;
+        position: relative;
+        border-radius: 4px;
+        background-color: #f5f5f5;
+        padding-left: 10px !important;
+    }
+
+    legend {
+        font-size: 14px;
+        font-weight: bold;
+        margin-bottom: 0px;
+        width: 35%;
+        border: 1px solid #ddd;
+        border-radius: 4px;
+        padding: 5px 5px 5px 10px;
+        background-color: #ffffff;
+    }
+
+</style>
+
 <fieldset>
-
-
     <legend>
-        Restaurant App
+        Restaurant
     </legend>
     <div class="container">
         <div class="row">
-            <div class="col-md-6" >
+            <div class="col-sm-6">
                 <div class="form-group">
                     Customer:
-                    @Html.DropDownList("Customer",new SelectList(@Model.Item1,dataValueField:"Value",dataTextField:"Text")),
+                    @* @Html.DropDownList("Customer",new SelectList(@Model.Item1,dataValueField:"Value",dataTextField:"Text"),
+                        htmlAttributes:new {@class="form-control"}),*@
+                    <select class="form-control" asp-items="@(new SelectList(Model.Item1,"CustomerId","CustomerName"))"></select>
+                </div>
+            </div>
 
-
+            <div class="col-sm-6">
+                <div class="form-group">
+                    Payment Type:
+                    @* @Html.DropDownList("PaymentType",new SelectList(@Model.Item3,dataValueField:"Value",dataTextField:"Text"),
+                        htmlAttributes:new {@class="form-control"}),*@
+                    <select class="form-control" asp-items="@(new SelectList(Model.Item3,"PaymentTypeId","PaymentTypeName"))"></select>
                 </div>
             </div>
         </div>
-
     </div>
+
 </fieldset>
+
+
+<fieldset>
+    <legend>
+        Restaurant Items
+    </legend>
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-4">
+                <div class="form-group">
+                    Item:
+                    @* @Html.DropDownList("Customer",new SelectList(@Model.Item1,dataValueField:"Value",dataTextField:"Text"),
+                        htmlAttributes:new {@class="form-control"}),*@
+                    <select class="form-control" id="Item" asp-items="@(new SelectList(Model.Item2,"ItemId","ItemName"))"></select>
+                </div>
+            </div>
+
+            <div class="col-sm-4">
+                <div class="form-group">
+                    Price:
+                    <input style="text-align:right" type="text" readonly="readonly" id="txtUnitPrice" value="0.00" name="Price" class="form-control" />
+                </div>
+            </div>
+
+            <div class="col-sm-4">
+                <div class="form-group">
+                    Quantity:
+                    <input type="text" style="text-align:right" id="txtQuantity" value="0.00" name="Quantity" class="form-control" />
+                </div>
+            </div>
+
+            <div class="col-sm-4">
+                <div class="form-group">
+                    Discount:
+                    <input type="text" id="txtDiscount" value="0.00" name="Discount" class="form-control" />
+                </div>
+            </div>
+
+            <div class="col-sm-4">
+                <div class="form-group">
+                    Total:
+                    <input type="text" style="text-align:right" readonly="readonly" id="txtTotal" value="0.00" name="Total" class="form-control" />
+                </div>
+            </div>
+
+            <div class="col-sm-6">
+                <div class="form-group">
+                    <input type="button" style="margin-top:20px" value="Add To List" name="AddToList" id="btnAddToList" class="btn btn-success" />
+                </div>
+            </div>
+        </div>
+    </div>
+
+</fieldset>
+
+<fieldset>
+    <legend>Restaurant Listed Item</legend>
+    <table style="width:100%">
+        <thead>
+            <tr>
+                <th>
+                    Item Id
+                </th>
+          
+          
+                <th>
+                    Item Name
+                </th>
+          
+           
+                <th>
+                    Price
+                </th>
+          
+           
+                <th>
+                    Quantity
+                </th>
+          
+           
+                <th>
+                    Discount
+                </th>
+           
+           
+                <th>
+                    Total
+                </th>
+           
+          
+                <th>
+                    Action
+                </th>
+            </tr>
+
+        </thead>
+    </table>
+</fieldset>
+
+<script type="text/javascript" >
+    $(document).ready(function()
+    {
+       
+       $("#Item").change(function (){
+           //var itemId= $("#Item").val();
+           var itemId=$(this).children("option:selected").val();
+           console.log(itemId);
+           GetItemPrice(itemId);
+       });
+    });
+    function GetItemPrice(itemId){
+        $.ajax({
+
+            async:true,
+            type:'GET',
+            dataType:'JSON',
+           // contentType:'application/json; charset=utf-8',
+            data:{ItemId:itemId},
+            url:'/Customer/getItemPrice',
+            success:function (data){
+                debugger;
+                $("#txtUnitPrice").val(parseFloat(data).toFixed(2));
+            },
+
+            error:function(){
+                alert("There is a problem to get unit price");
+            }
+        });
+    }
+
+
+</script>

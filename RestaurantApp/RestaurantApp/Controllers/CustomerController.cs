@@ -20,10 +20,17 @@ namespace RestaurantApp.Controllers
 
         public IActionResult Index()
         {
-            var objmultiple = new Tuple<List<CustomerViewModel>, , object>(_customer.GetAllCustomer(),
+            var objmultiple = new Tuple<IEnumerable<CustomerViewModel>, IEnumerable<ItemViewModel>, IEnumerable<PaymentTypeViewModel>>(_customer.GetAllCustomer(),
                 _item.GetAllItem(), _paymentType.GetAllPaymentType());
 
             return View(objmultiple);
+        }
+
+      //  [HttpGet]
+        public JsonResult getItemPrice(int ItemId)
+        {
+            decimal price = _customer.getItemPrice(ItemId);
+            return Json(price);
         }
     }
 }
